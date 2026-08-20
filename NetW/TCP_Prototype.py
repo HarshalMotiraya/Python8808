@@ -1,43 +1,50 @@
-class TCPConnection:
+class TCPDemo:
     def __init__(self):
-        self.sequence_number = 0
-        self.ack_number = 0
+        self.seq = 1000
         self.connected = False
 
-    def connect(self):
-        print("SYN ->")
-        print("<- SYN-ACK")
-        print("ACK ->")
+    def handshake(self):
+        print("Client -> Server: SYN")
+        print("Server -> Client: SYN-ACK")
+        print("Client -> Server: ACK")
         self.connected = True
-        print("Connection established")
+        print("TCP connection established\n")
 
-    def send_data(self, data):
+    def send_text(self, text):
         if not self.connected:
-            print("Not connected")
+            print("Connection not established")
             return
 
-        packet = {
-            "seq": self.sequence_number,
-            "data": data
-        }
+        print(f"User text: {text}")
+        print("Splitting text into TCP segments...")
 
-        print(f"Sending packet: {packet}")
-        print(f"Waiting for ACK for seq {self.sequence_number}")
-        print(f"ACK received for seq {self.sequence_number}")
+        chunk_size = 5
+        parts = [text[i:i+chunk_size] for i in range(0, len(text), chunk_size)]
 
-        self.sequence_number += len(data)
+        for i, part in enumerate(parts):
+            packet = {
+                "seq": self.seq,
+                "ack": 0,
+                "flags": "PSH, ACK",
+                "data": part
+            }
+            print(f"\nSending segment {i+1}: {packet}")
+            print(f"Server -> Client: ACK {self.seq + len(part)}")
+            self.seq += len(part)
+
+        print("\nAll text sent successfully")
 
     def close(self):
-        if self.connected:
-            print("FIN ->")
-            print("<- FIN-ACK")
-            print("ACK ->")
-            self.connected = False
-            print("Connection closed")
+        print("\nClient -> Server: FIN")
+        print("Server -> Client: FIN-ACK")
+        print("Client -> Server: ACK")
+        self.connected = False
+        print("TCP connection closed")
 
 
-tcp = TCPConnection()
-tcp.connect()
-tcp.send_data("Hello")
-tcp.send_data("World")
+text = input("Enter text: ")
+
+tcp = TCPDemo()
+tcp.handshake()
+tcp.send_text(text)
 tcp.close()
