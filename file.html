@@ -1,0 +1,15 @@
+Data Ingestion: The pipeline accepts raw CTI text from sources like CISA alerts or Kaggle CTI corpora.
+
+Fine-Tuned Extraction: We fine-tune an 8-billion parameter open-weight model—such as Llama-3 or Mistral-7B—using QLoRA. The model extracts Subject-Predicate-Object triples from the text.
+
+STIX 2.1 Mapping: The extracted entities are mapped into standard STIX 2.1 JSON objects for interoperability.
+
+Graph Database Ingestion: These objects are loaded as nodes and directed edges into a Neo4j database, explicitly aligned with the MITRE ATT&CK framework."Data Ingestion: The pipeline accepts raw CTI text from sources like CISA alerts or Kaggle CTI corpora.
+
+Fine-Tuned Extraction: We fine-tune an 8-billion parameter open-weight model—such as Llama-3 or Mistral-7B—using QLoRA. The model extracts Subject-Predicate-Object triples from the text.
+
+STIX 2.1 Mapping: The extracted entities are mapped into standard STIX 2.1 JSON objects for interoperability.
+
+Graph Database Ingestion: These objects are loaded as nodes and directed edges into a Neo4j database, explicitly aligned with the MITRE ATT&CK framework."
+
+database - Neo4j database, explicitly aligned with the MITRE ATT&CK framework."*

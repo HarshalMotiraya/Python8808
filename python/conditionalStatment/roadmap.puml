@@ -1,0 +1,65 @@
+@startuml ransomware_thesis_roadmap
+title 6-Month Roadmap: ML-Based Ransomware Detection from Linux File-System Behavior
+
+skinparam backgroundColor white
+skinparam activity {
+  BackgroundColor #E1F5EE
+  BorderColor #0F6E56
+  FontColor #04342C
+  ArrowColor #0F6E56
+}
+
+start
+
+partition "Month 1" {
+  :Literature review;
+  :Finalize scope
+  (false-positive focus);
+  :Learn eBPF basics
+  (bcc / bpftrace);
+  :Get proposal approved;
+}
+
+partition "Month 2" {
+  :Build eBPF file-event monitor
+  (open/read/write/rename/delete);
+  :Time-window aggregation;
+  :Feature extraction script
+  (writes/sec, renames/sec,
+  unique extensions, etc.);
+}
+
+partition "Month 3" {
+  :Set up isolated VM;
+  :Collect Normal class data;
+  :Collect Benign-high-volume data
+  (backup, rsync, tar, compile);
+  :Simulate Ransomware-like
+  behavior (safe, sandboxed);
+  :Produce labeled dataset;
+}
+
+partition "Month 4" {
+  :Train Logistic Regression
+  (baseline);
+  :Train Random Forest;
+  :Train XGBoost;
+  :Tune + validate models;
+}
+
+partition "Month 5" {
+  :Experiment A - False positive
+  test vs benign-high-volume;
+  :Experiment B - Early detection
+  (10/50/100/500 files checkpoints);
+  :Build live demo script;
+}
+
+partition "Month 6" {
+  :Write thesis chapters;
+  :Prepare slides + demo;
+  :Rehearse viva defense;
+}
+
+stop
+@enduml
