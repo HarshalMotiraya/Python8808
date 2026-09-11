@@ -1,0 +1,20 @@
+the dog eats food
+the dog plays with ball
+the dog runs in park
+the dog likes meat
+the puppy plays with dog
+the puppy runs in park
+the cat eats food
+the cat plays with ball
+the cat runs in garden
+the cat likes fish
+the kitten plays with cat
+the kitten eats fish
+the boy plays with dog
+the boy likes cat
+the girl plays with puppy
+the girl likes dog
+the car runs on road
+the bus runs on road
+the car is fast
+the bus is fast

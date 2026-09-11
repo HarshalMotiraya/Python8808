@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+models/*model
+models/*.bin
+output/*
+!.gitkeep
